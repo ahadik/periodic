@@ -1,0 +1,13 @@
+procedure DFS(G,v):
+	label v as discovered
+		for all edges from v to w in G.adjacentEdges(v) do
+			if vertex w is not labeled as discovered then
+				for each element abbreviation
+					if vertex w matches an element exactly:
+						mark w as visited
+              			recursively call DFS(G,w)
+					else if vertex w matches the first letter of an abbreviation:
+						if child of vertex w match the second letter of the abbreviation
+							duplicate w-child, prepend value of vertex w, add as child of v, remove w-child from w
+				if w is unvisted:
+					delete it
