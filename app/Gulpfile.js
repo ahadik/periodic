@@ -18,7 +18,8 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     gulpif = require('gulp-if'),
     browserSync = require('browser-sync'),
-    babel = require('gulp-babel');
+    babel = require('gulp-babel'),
+    exec = require('child_process').exec;
 
 //////////////////////////////
 // Variables
@@ -247,10 +248,14 @@ gulp.task('browser-sync', ['nodemon'], function () {
   });
 });
 
+gulp.task('data', function(){
+  exec('cp -a ../algorithm/exports/ ./data/')
+});
+
 //////////////////////////////
 // Running Tasks
 //////////////////////////////
-gulp.task('build', ['client-pack', 'server-pack', 'eslint', 'html', 'sass', 'images']);
+gulp.task('build', ['client-pack', 'server-pack', 'eslint', 'html', 'sass', 'images', 'data']);
 
 gulp.task('test', ['build']);
 
